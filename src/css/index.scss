@@ -31,3 +31,186 @@
 
 @import "website/utils/traditional-menu";
 
+html {
+	background-color: #8EC5FC;
+	background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+	min-height: 100vh;
+}
+
+body {
+	background-color: transparent;
+	color: #344b63;
+	font-size: 20px;
+}
+
+.title {
+	text-align: center;
+}
+
+.exercise-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+}
+
+.exercise-card {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+
+	.title {
+		font-size: 1.5rem;
+		font-weight: bold;
+	}
+
+	.words {
+		margin: 20px 0;
+	}
+
+	a {
+		margin-top: auto;
+	}
+}
+
+.card {
+	--color-rgb: 255, 255, 255;
+	background: rgb(var(--color-rgb));
+	box-shadow: 0 8px 0 0 rgba(var(--color-rgb), 0.5);
+	border-radius: 20px;
+	padding: 20px;
+	color: $black;
+	text-decoration: none;
+	
+	&.hoverable {
+		transform: translate(0, 0);
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+		&:hover {
+			transform: translate(0, 5px);
+			box-shadow: 0 3px 0 0 rgba(var(--color-rgb), 0.5);
+		}
+	}
+
+	&:hover {
+		color: $black;
+		text-decoration: none;
+	}
+}
+
+.exercise {
+	.title {
+		position: relative;
+
+		.back {
+			font-size: 12px;
+			position: absolute;
+			top: 15px;
+			left: 0;
+			display: flex;
+			gap: 6px;
+			align-items: center;
+
+			padding: 10px 20px;
+
+			--color-rgb: 230, 230, 230;
+		}
+	}
+
+	.levels {
+		display: flex;
+		gap: 20px;
+		justify-content: center;
+	}
+
+	.level-card {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: bold;
+
+		&-easy {
+			--color-rgb: 133, 255, 189;
+		}
+
+		&-normal {
+			--color-rgb: 247, 206, 104;
+		}
+
+		&-hard {
+			--color-rgb: 255, 37, 37;
+		}
+	}
+}
+
+.easy-exercise {
+	display: flex;
+	flex-direction: column;
+
+	.hint {
+		text-align: center;
+		@extend %title2;
+		margin: 0;
+
+		.icon {
+			font-size: 50%;
+			vertical-align: middle;
+			opacity: 0.3;
+		}
+	}
+
+	.answer {
+		position: relative;
+		margin-top: 40px;
+		
+		.hidden {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+		}
+
+		.blocks {
+			display: flex;
+			justify-content: center;
+			gap: 2px;
+		}
+
+		.block {
+			width: 75px;
+			height: 75px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 2rem;
+			font-weight: 900;
+
+			&.space {
+				background: transparent;
+				box-shadow: none;
+			}
+		}
+
+		.reset {
+			--color-rgb: 255, 222, 233;
+			margin-left: 10px;
+			position: relative;
+			z-index: 10;
+		}
+
+		.listen {
+			--color-rgb: 181, 255, 252;
+			margin-left: 10px;
+			position: relative;
+			z-index: 10;
+		}
+	}
+
+	.done-button {
+		display: inline-block;
+		margin-top: 40px;
+		--color-rgb: 133, 255, 189;
+		align-self: center;
+	}
+}

@@ -1,58 +1,60 @@
+export const METHOD_GET = 'GET';
+export const METHOD_POST = 'POST';
+export const METHOD_JSON = 'JSON';
 
-import ns from '../../NameSpace';
-import toFormData from '../../utils/toFormData';
-
-/**
- * This is a generic API implementation, that needs to be modified to reflect the actual backend API that will need to be implemented in the specific project you're working on.
- * */
-
-// make sure that API path is available in the namespace
-const baseApi = ns.api;
-console.assert(Boolean(baseApi), 'Base API path not set in namespace. Please check Redux API setup.');
-
-
-const API_ENDPOINTS = {
-	foo: 'foo',
-};
-
-type GenericApiCallResponse<T> = {
-	message: string,
-	success: boolean,
-	data: T,
-};
-
-const defaultHeaders = {};
-
-function apiCall<T>(endpoint:string, method: string = 'get', data: object = null, headers: object = null):Promise<GenericApiCallResponse<T>> {
-	// console.log('load', endpoint);
-	let body = null;
-	let qstr = '';
-	if (data) {
-		switch (method.toLowerCase()) {
-			case 'get':
-				qstr = '?' + Object.keys(data).map(key => `${key}=${data[key]}`).join('&');
-				break;
-			case 'post':
-			case 'put':
-				body = toFormData(data);
-				break;
-			default:
+export function getJSON(url:string, data:Record<string, any> = {}, type = METHOD_GET, headers:[string, string][] = []) {
+	return new Promise((resolve, reject) => {
+		if (!url) {
+			console.error('No url specified');
+			reject();
+			return;
 		}
-	}
 
-	return fetch(`${baseApi}/${endpoint}${qstr}`, {
-		method,
-		body,
-		headers: { ...defaultHeaders, ...headers },
-	}).then(response => response.json()).then((json:GenericApiCallResponse<T>) => json);
+		let append = '';
+		if (type === METHOD_GET && data) {
+			append += url.toString().indexOf('?') >= 0 ? '&' : '?';
+
+			let str = '';
+			for (const key in data) {
+				if (str != '') {
+					str += '&';
+				}
+				str += key + '=' + encodeURIComponent(data[key]);
+			}
+			append += str;
+		}
+
+		const request = new XMLHttpRequest();
+		const method = type === METHOD_JSON ? METHOD_POST : type;
+		request.open(method, url + append, true);
+
+		let postData;
+		if (type === METHOD_POST) {
+			postData = Object.keys(data).reduce((fd, k) => {
+				fd.append(k, data[k] === null ? '' : data[k]);
+				return fd;
+			}, new FormData());
+		} else if (type === METHOD_JSON) {
+			request.setRequestHeader('Content-Type', 'application/json');
+			postData = JSON.stringify(data || '');
+		}
+
+		// @ts-ignore
+		headers.forEach(header => request.setRequestHeader(...header));
+
+		request.onerror = (e) => {
+			console.error(e);
+		};
+		request.onload = () => {
+			if (request.status >= 200 && request.status < 400) {
+				const res = JSON.parse(request.responseText);
+				const receivedData = res;
+				resolve(receivedData);
+			} else {
+				reject();
+			}
+		};
+		request.onerror = reject;
+		request.send(postData);
+	});
 }
-
-const createApi = <TList, TSingle>(endpoint) => {
-	return {
-		getList: () => apiCall<TList[]>(endpoint),
-		getSingle: (id: number) => apiCall<TSingle>(`${endpoint}/${id}`),
-	};
-};
-
-export const FooApi = createApi<IFooListItem, IFooItem>(API_ENDPOINTS.foo);
-

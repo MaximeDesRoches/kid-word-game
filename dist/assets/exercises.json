@@ -1,0 +1,47 @@
+[
+	{
+		"id": 0,
+		"name": "Liste 9",
+		"language": "fr-CA",
+		"words": [
+			"mieux",
+			"peu",
+			"le deuxième",
+			"la deuxième",
+			"deuxième",
+			"joyeux",
+			"joyeuse",
+			"ceux",
+			"peureux",
+			"peureuse",
+			"les yeux"
+		]
+	},
+	{
+		"id": 1,
+		"name": "Liste 13",
+		"language": "fr-CA",
+		"words": [
+			"à côté de",
+			"le côté",
+			"la fée",
+			"le légume",
+			"déjà",
+			"la cheminée",
+			"une idée"
+		]
+	},
+	{
+		"id": 3,
+		"name": "English 1",
+		"language": "en-US",
+		"words": [
+			"cat",
+			"dog",
+			"bird",
+			"fish",
+			"horse",
+			"cow"
+		]
+	}
+]
