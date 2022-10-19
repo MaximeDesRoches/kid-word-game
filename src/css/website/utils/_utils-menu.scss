@@ -1,0 +1,171 @@
+%alignItemInTheMiddle {
+	justify-content: center;
+
+	// put every elements inside nav to have these styles
+	.menu-burger-wrapper,
+	.logo-wrapper,
+	.side-main-menu {
+		flex: 1;
+		display: flex;
+	}
+
+	// element at the right
+	.menu-burger-wrapper {
+		margin-right: auto;
+	}
+
+	// element to put in the middle
+	.logo-wrapper {
+		justify-content: center;
+	}
+	
+	// element at the left
+	.side-main-menu {
+		margin-left: auto;
+		justify-content: flex-end;
+	}
+}
+
+@mixin traditionalSubMenu {
+	position: relative;
+
+	.submenu {
+		position: fixed;
+		padding: 30px 40px;
+		top: var(--menuHeight);
+	}
+
+	@include media-breakpoint-down(xs) {
+		.submenu {
+			position: relative;
+			display: block;
+			padding: 0;
+			top: 0;
+			height: 0;
+			overflow: hidden;
+		}
+	}
+}
+
+@mixin fullSize($containerSpacing: 45px calc((var(--container-gutter) / 2) + #{$grid-gutter-width /2}), $columns: 1, $gutter: 0 $grid-gutter-width) {
+	position: fixed;
+	width: 100vw;
+	top: var(--menuHeight);
+	left: 0;
+
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
+
+	padding: $containerSpacing;
+
+	.submenu-item {
+		flex: 0 1 calc(100% / #{$columns});
+		padding: $gutter;
+	}
+
+	@include media-breakpoint-down(xs) {
+		width: auto;
+		position: relative;
+		display: block;
+		padding: 0;
+		top: 0;
+	}
+}
+
+%addArrowToParent {
+	&:after {
+		content: '▾';
+		margin-left: 5px;
+	}
+}
+
+%addNumberToParent {
+	&:after {
+		content: attr(data-children-number);
+		margin-left: 5px;
+		font-size: fs(18px);
+		font-weight: $font-weight-bold;
+		vertical-align: super;
+	}
+}
+
+@mixin mainMenuHoverAnimation {
+	pointer-events: none;
+
+	.menu-item {
+		pointer-events: all;
+	}
+
+	&:hover {
+		.menu-item:not(:hover) {
+			&:first-of-type {
+				.img-wrapper {
+					opacity: 0;
+					transition: transform 1s $easeOutCubic, opacity 0.3s ease;
+				}
+			}
+
+			.img-wrapper {
+				opacity: 0;
+				transition: transform 1s $easeOutCubic, opacity 0.3s ease 0.4s;
+			}
+
+			.menu-link {
+				opacity: 0.2;
+			}
+
+			&.opened {
+				.menu-link {
+					opacity: 1;
+				}
+			}
+		}
+
+		.menu-item:not(.opened):hover {
+			.menu-link {
+				opacity: 1;
+			}
+		}
+	}
+
+	&.opened {
+		.menu-item:not(.opened) {
+			.menu-link {
+				opacity: 0.2;
+			}
+		}
+	}
+}
+
+%mainMenuImagesHoverAnimation {
+	pointer-events: none;
+
+	.menu-item {
+		pointer-events: all;
+
+		&:hover {
+			.img-wrapper {
+				opacity: 1;
+				z-index: 3;
+				transition: transform 0.9s $MenuEasing 0.3s, opacity 0.3s ease;
+			}
+		}
+	}
+
+	&:hover {
+		.menu-item:not(:hover) {
+			&:first-of-type {
+				.img-wrapper {
+					opacity: 0;
+					transition: transform 1s $easeOutCubic, opacity 0.3s ease;
+				}
+			}
+
+			.img-wrapper {
+				opacity: 0;
+				transition: transform 1s $easeOutCubic, opacity 0.3s ease 0.4s;
+			}
+		}
+	}
+}

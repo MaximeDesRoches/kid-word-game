@@ -1,0 +1,346 @@
+%mainMenuBaseStyles_trad {
+	position: relative;
+	width: calc(100% - (var(--container-gutter) + #{$grid-gutter-width}));
+	margin: 0 auto;
+	// The height of the menu is defined by his children. If the children inside the menu are not big enough to be the right height, you can set it here. 
+	height: var(--menuHeight);
+
+	display: flex;
+	align-items: stretch;
+	background-color: $color-background-primary;
+
+	.logo-wrapper,
+	.side-main-menu {
+		align-items: center;
+	}
+	
+	.logo-wrapper,
+	.side-main-menu {
+		@extend %reset_list;
+		display: flex;
+	}
+
+	.menu-burger-btn,
+	.logo-wrapper,
+	.side-main-menu,
+	.main-menu {
+		padding-top: var(--topMenuHeight);
+	}
+
+	@include media-breakpoint-down(xs) {
+		.logo-wrapper {
+			order: 1;
+		}
+		.menu-burger-btn {
+			order: 2;
+		}
+		.side-main-menu {
+			order: 3;
+		}
+	}
+}
+
+%mainMenuWrapper {
+	display: flex;
+	align-items: center;
+	margin-right: auto;
+
+	@include media-breakpoint-down(xs) {
+		transform: translate(-100%, 0);
+
+		display: flex;
+		position: fixed;
+		top: var(--menuHeight);
+		left: 0;
+		width: 360px;
+		max-width: 100vw; 
+		height: calc(100vh - var(--menuHeight));
+
+		flex-direction: column;
+
+		background: $color-background-primary;
+
+		transition: transform 0.3s $MenuEasing;
+
+		.is-opening & {
+			transform: translate(0, 0);
+		}
+	}
+}
+
+%socialMenu_trad {
+	display: none;
+
+	@include media-breakpoint-down(xs) {
+		order: 3;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		background-color: darken($color-background-primary, 5%);
+	
+		margin: auto 0 0 0;
+		padding: 15px 0;
+	
+		.social-link {
+			margin-bottom: 0
+		}
+	}
+}
+
+%topMenu_trad {
+	@extend %reset_list;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: var(--topMenuHeight);
+
+	&:after {
+		content: '';
+		width: 100vw; 
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: calc(((var(--container-gutter) / 2) + #{$grid-gutter-width /2}) * -1);
+		z-index: 1;
+		background-color: darken($color-background-primary, 10%);
+	}
+
+	@include media-breakpoint-down(xs) {
+		order: 2;
+
+		position: relative;
+		height: auto;
+		flex-direction: column;
+		margin-top: 20px;
+
+		&::after {
+			content: none;
+		}
+	}
+}
+
+%topMenuItem_trad {
+	position: relative;
+	z-index: 2;
+	margin: 0 16px;
+
+	@include media-breakpoint-down(xs) {
+		margin: 5px 16px;
+	}
+}
+
+%topMenuLink_trad {
+	// set main menu font style, font family, etc
+	font-family: $font-family-title;
+	color: $color-text-primary;
+}
+
+%mainMenu_trad {
+	@extend %reset_list;
+	display: flex;
+	align-items: stretch;
+
+	@include media-breakpoint-down(xs) {
+		order: 1;
+		width: 100%;
+		flex-direction: column;
+	}
+}
+
+%mainMenuItem_trad {
+	margin: 0 16px;
+	display: flex;
+	
+	// set submenu styles
+	@include traditionalSubMenu;
+
+	.menu-link.submenu-fullsize ~ .submenu {
+		@include fullSize((45px 24vw), 3, (0 $grid-gutter-width 0 0));
+	}
+
+	@include media-breakpoint-down(xs) {
+		display: block;
+		padding: 10px 0;
+		border-bottom: 1px solid darken($color-background-primary, 5%);
+	}
+}
+
+%mainMenuLink_trad {
+	// set main menu font style, font family, etc
+	padding: 0;
+
+	display: flex;
+	align-items: center;
+
+	background-color: transparent;
+
+	font-family: $font-family-title;
+	color: $color-text-primary;
+
+	[data-has-submenu] & {
+		.menu-link-wrapper {
+			@extend %addArrowToParent;
+		}
+	}
+
+	&:hover,
+	&:focus {
+		text-decoration: underline;
+	}
+}
+
+%submenu_trad {
+	@extend %reset_list;
+	z-index: -1;
+	transform: translate(0, calc(-100% - var(--menuHeight)));
+	visibility: hidden;
+
+	flex-direction: column;
+
+	background-color: $color-background-primary;
+
+	transition: transform 0.5s $MenuEasing, visibility 0s linear 0.5s;
+}
+
+%submenuOpened_trad {
+	transform: translate(0, 0);
+	visibility: visible;
+	transition: transform 0.5s $MenuEasing, visibility 0s linear 0s;
+}
+
+%submenuItem_trad {
+	
+}
+
+%submenuLink_trad {
+	// set submenu font style, font family, etc
+	padding: 0;
+	background-color: transparent;
+	
+	font-family: $font-family-title;
+	color: $color-text-primary;
+	white-space: nowrap;
+
+	span {
+		display: block;
+	}
+
+	&:hover,
+	&:focus {
+		text-decoration: underline;
+	}
+}
+
+%mobileBurger_trad {
+	display: flex;
+	align-items: center;
+	padding-top: var(--topMenuHeight);
+
+	.menu-burger-btn {
+		display: none;
+		
+		@include media-breakpoint-down(xs) {
+			@include burgerDefault;
+			margin-right: 16px;
+			display: flex;
+		}
+	}
+}
+
+%traditionalMenu {
+	.menu {
+		@extend %mainMenuBaseStyles_trad;
+		
+		.menu-burger-wrapper {
+			@extend %mobileBurger_trad;
+		}
+
+		.main-menu-wrapper {
+			@extend %mainMenuWrapper;
+		}
+
+		.social-menu {
+			@extend %socialMenu_trad;
+		}
+
+		.top-menu {
+			@extend %topMenu_trad;
+
+			.menu-item {
+				@extend %topMenuItem_trad;
+				
+				.menu-link {
+					@extend %topMenuLink_trad;
+				}
+			}
+		}
+	
+		.main-menu {
+			@extend %mainMenu_trad;
+	
+			.menu-item {
+				@extend %mainMenuItem_trad;
+
+				&.opened {
+					.submenu {
+						@extend %submenuOpened_trad;
+					}
+				}
+			}
+	
+			.menu-link {
+				@extend %mainMenuLink_trad;
+			}
+		}
+	
+		.submenu {
+			@extend %submenu_trad;
+	
+			.submenu-item {
+				@extend %submenuItem_trad;
+			}
+	
+			.submenu-link {
+				@extend %submenuLink_trad;
+			}
+		}
+	}
+
+	@include media-breakpoint-down(xs) {
+		.logo-wrapper {
+			margin-right: auto;
+		}
+
+		.menu {
+			&.is-opening {
+				.menu-burger-btn {
+					@include burgerIsOpening;
+				}
+			}
+		
+			&.opened {
+				.menu-burger-btn {
+					@include burgerOpened;
+				}
+			}
+			
+			&.closed {
+				.menu-burger-btn {
+					@include burgerClosed;
+				}
+			}
+		}
+	}
+}
+
+.traditional-menu {
+	position: relative;
+	z-index: $menuzindex;
+	background-color: $color-background-primary;
+	
+	@extend %traditionalMenu;
+}

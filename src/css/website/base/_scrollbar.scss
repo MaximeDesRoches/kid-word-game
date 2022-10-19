@@ -1,0 +1,45 @@
+.scrollbar {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: var(--scrollbar-width, 4px);
+	height: 100vh;
+	height: calc(var(--vh, 1vh) * 100);
+	background: $color-background-primary;
+	z-index: 2;
+	transform: scale(1, 1);
+	transition: transform 0.3s ease;
+
+	user-select: none;
+
+	.thumb {
+		width: 100%;
+		height: var(--thumb-size);
+		background: $color-accent-primary;
+		cursor: grab;
+	}
+	
+	&.active, &:hover {
+		transform: scale(4, 1);
+	}
+}
+
+@mixin scrollbar-styles() {
+	&::-webkit-scrollbar {
+		width: var(--scrollbar-width, 4px);
+		height: calc(var(--vh, 1vh) * 100);
+	}
+	
+	&::-webkit-scrollbar-track {
+		background: $color-accent-primary;
+	}
+	
+	&::-webkit-scrollbar-thumb {
+		background: $color-accent-primary;
+	}
+
+	& {
+		scrollbar-color: $color-accent-primary $color-accent-secondary;
+		scrollbar-width: thin;
+	}
+}

@@ -1,0 +1,10 @@
+a:not([class]) {
+	color: var(--color-text-main);
+	text-decoration: underline;
+	transition: color 0.3s;
+	
+	&:focus,
+	&:hover {
+		color: rgba($color-text-primary, 0.75);
+	}
+}

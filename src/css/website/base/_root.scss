@@ -1,0 +1,31 @@
+@at-root {
+	:root {
+		//General variables
+		--color-text-main: #{$color-text-primary};
+		--color-background-main: #{$white};
+	
+		--color-button-text: #{$color-text-secondary};
+		--color-button-border: #{$color-background-secondary};
+		--color-button-background: var(--color-button-border);
+	
+		--section-spacing-top: #{$section-spacing};
+		--section-spacing-bottom: #{$section-spacing};
+	
+		--container-size: 100%;
+		--container-gutter: #{$container-gutter};
+	
+		@include media-breakpoint-down(sm) {
+			--container-gutter: #{$container-gutter-mobile};
+		}
+	
+		@include media-breakpoint-down(xs) {
+			--section-spacing-top: #{$section-spacing-mobile};
+			--section-spacing-bottom: #{$section-spacing-mobile};
+		}
+	}
+}
+
+%inverted_colors {
+	--color-text-main: #{$color-text-secondary};
+	--color-background-main: #{$color-background-secondary};
+}

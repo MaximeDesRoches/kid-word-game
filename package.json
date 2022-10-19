@@ -1,0 +1,53 @@
+{
+	"name": "wordgame",
+	"title": "wordgame",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"backup": "bash scripts/backup.sh",
+		"composer": "bash scripts/composer.sh",
+		"start": "bash scripts/watch.sh",
+		"watch": "bash scripts/watch.sh",
+		"build": "bash scripts/build.sh",
+		"vhost": "bash scripts/vhost.sh",
+		"sync": "bash scripts/sync.sh",
+		"develop": "bash scripts/develop.sh"
+	},
+	"keywords": [],
+	"author": "La Grange",
+	"license": "ISC",
+	"devDependencies": {
+		"autoprefixer": "^10.3.1",
+		"bootstrap-scss": "^4.3.1",
+		"css-loader": "^6.2.0",
+		"css-minimizer-webpack-plugin": "^3.0.2",
+		"esbuild-loader": "^2.15.0",
+		"file-loader": "^6.2.0",
+		"mini-css-extract-plugin": "^2.2.0",
+		"postcss-loader": "^6.1.1",
+		"sass": "1.32.13",
+		"sass-loader": "^12.1.0",
+		"style-loader": "^3.2.1",
+		"tslib": "^2.3.1",
+		"typescript": "^4.3.5",
+		"webpack": "^5.50.0",
+		"webpack-cli": "^4.8.0",
+		"webpack-dev-server": "^3.11.2",
+		"webpack-livereload-plugin": "^3.0.2"
+	},
+	"dependencies": {
+		"@reduxjs/toolkit": "^1.8.3",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-redux": "^8.0.2",
+		"react-router-dom": "^6.3.0",
+		"redux": "^4.2.0",
+		"redux-logger": "^3.0.6",
+		"sha1": "^1.1.1",
+		"@barba/core": "^2.9.7",
+		"gsap": "^3.7.1",
+		"imagesloaded": "^4.1.4",
+		"intersection-observer": "^0.12.0",
+		"virtual-scroll": "^2.1.1"
+	}
+}

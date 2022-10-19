@@ -1,0 +1,125 @@
+* {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+%title {
+	font-family: $font-family-title;
+	font-weight: $font-weight-normal;
+	line-height: 1.3;
+	margin: 0 0 0.5em 0;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+$heading: (
+	"%title1": ($font-size-title1, $line-height-title1, $letter-spacing-title1),
+	"%title2": ($font-size-title2, $line-height-title2, $letter-spacing-title2),
+	"%title3": ($font-size-title3, $line-height-title3, $letter-spacing-title3),
+	"%title4": ($font-size-title4, $line-height-title4, $letter-spacing-title4),
+	"%title5": ($font-size-title5, $line-height-title5, $letter-spacing-title5),
+	"%text": ($font-size-text, $line-height-text, $letter-spacing-text),
+	"%text_button": ($font-size-button, $line-height-button, $letter-spacing-button),
+	"%upper_title": ($font-size-upper-title, $line-height-upper-title, $letter-spacing-upper-title),
+	"%sub_title": ($font-size-subtitle, $line-height-subtitle, $letter-spacing-subtitle),
+	"%label_style": ($font-size-form, $line-height-form, $letter-spacing-form),
+);
+
+@each $value, $fz in $heading {
+	#{$value} {
+		@extend %title;
+		font-size: nth($fz, 1);
+		line-height: nth($fz, 2);
+		letter-spacing: nth($fz, 3);
+	}
+}
+
+%text {
+	font-family: $font-family-text;
+}
+
+%text_smallTag {
+	font-family: $font-family-text;
+	font-size: fs($font-size-small-tag);
+}
+
+%text_button {
+	text-transform: uppercase;
+	
+	&:hover, &:focus {
+		text-decoration: none;
+	}
+}
+
+body {
+	@extend %text;
+	color: var(--color-text-main);
+}
+
+.title-1 {
+	@extend %title1;
+}
+
+.title-2 {
+	@extend %title2;
+}
+
+.title-3 {
+	@extend %title3;
+}
+
+.title-4 {
+	@extend %title4;
+}
+
+.title-5 {
+	@extend %title5;
+}
+
+.upper-title {
+	display: block;
+	@extend %upper_title;
+}
+
+.subtitle {
+	@extend %sub_title;
+}
+
+p {
+	@extend %text;
+	margin-top: 0;
+	margin-bottom: 1em;
+
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+
+	& + [class^=button] {
+		margin-top: 30px;
+	}
+}
+
+small {
+	display: block;
+	@extend %text_smallTag;
+}
+
+em {
+	font-style: italic;
+}
+
+strong {
+	font-weight: $font-weight-bold;
+}
+
+sup {
+	font-size: clamp(12px, 0.5em, 20px);
+	top: 0;
+	vertical-align: super;
+}
+
+.is-inverted-colors {
+	@extend %inverted_colors;
+}
