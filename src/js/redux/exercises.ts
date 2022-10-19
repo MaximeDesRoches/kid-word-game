@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { CDN_BASE } from '../Constants';
 import { getJSON } from './async/api';
 import createDebouncedAsyncAction from './async/createDebouncedAsyncAction';
 
@@ -17,7 +18,7 @@ type IExercisesState = {
 export const getExercises = createDebouncedAsyncAction<IExercisesState>(
 	'exercises/getExercises',
 	() => {
-		return getJSON('/assets/exercises.json?v=' + Date.now());
+		return getJSON(CDN_BASE + '/assets/exercises.json?v=' + Date.now());
 	},
 	{
 		fulfilled: (state, action) => {

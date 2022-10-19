@@ -6,6 +6,8 @@ export const ROUTES = {
 	DIFFICULTY: ':difficulty',
 };
 
+export const CDN_BASE = '.';
+
 export const DEFAULT_LANG = 'fr';
 
 export const EXCLUDED_LOGGER_ACTIONS = [];
