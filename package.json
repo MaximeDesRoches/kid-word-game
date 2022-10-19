@@ -4,6 +4,8 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d dist",
 		"backup": "bash scripts/backup.sh",
 		"composer": "bash scripts/composer.sh",
 		"start": "bash scripts/watch.sh",
@@ -13,6 +15,7 @@
 		"sync": "bash scripts/sync.sh",
 		"develop": "bash scripts/develop.sh"
 	},
+	"homepage": "https://maximedesroches.github.io/kid-word-game",
 	"keywords": [],
 	"author": "La Grange",
 	"license": "ISC",
@@ -23,6 +26,7 @@
 		"css-minimizer-webpack-plugin": "^3.0.2",
 		"esbuild-loader": "^2.15.0",
 		"file-loader": "^6.2.0",
+		"gh-pages": "^4.0.0",
 		"mini-css-extract-plugin": "^2.2.0",
 		"postcss-loader": "^6.1.1",
 		"sass": "1.32.13",
