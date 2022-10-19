@@ -1,1 +1,1 @@
-<?php define('ASSETS_VERSION', '20221019154238');
+<?php define('ASSETS_VERSION', '20221019154819');
