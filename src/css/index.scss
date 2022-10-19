@@ -51,6 +51,7 @@ body {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 20px;
+	margin-bottom: 60px;
 }
 
 .exercise-card {
@@ -65,10 +66,12 @@ body {
 
 	.words {
 		margin: 20px 0;
+		display: none;
 	}
 
-	a {
+	.button {
 		margin-top: auto;
+		display: none;
 	}
 }
 
@@ -134,10 +137,12 @@ body {
 
 		&-normal {
 			--color-rgb: 247, 206, 104;
+			display: none;
 		}
 
 		&-hard {
 			--color-rgb: 255, 37, 37;
+			display: none;
 		}
 	}
 }

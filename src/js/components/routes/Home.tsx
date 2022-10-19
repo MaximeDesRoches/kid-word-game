@@ -16,17 +16,17 @@ export default function Home() {
 					<div className="exercise-grid">
 						{isLoaded && exercises.map((exercise) => {
 							return (
-								<div key={exercise.id} className="card exercise-card">
+								<Link to={ROUTES.EXERCISE.replace(':id', exercise.id.toString())} key={exercise.id} className="card hoverable exercise-card">
 									<div className="title">{exercise.name}</div>
 
 									<div className="words">
 										{exercise.words.map((word) => <div className="word" key={word}>{word}</div>)}
 									</div>
 
-									<Link to={ROUTES.EXERCISE.replace(':id', exercise.id.toString())}>
+									<div className="button">
 										Pratiquer
-									</Link>
-								</div>
+									</div>
+								</Link>
 							)
 						})}
 					</div>
