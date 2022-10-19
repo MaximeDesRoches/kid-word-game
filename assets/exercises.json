@@ -1,6 +1,83 @@
 [
 	{
 		"id": 0,
+		"name": "Liste 1",
+		"language": "fr-CA",
+		"words": [
+			"me", "m'", "te", "t'", "si", "ni", "un an", "en", "il y a"
+		]
+	},
+	{
+		"id": 1,
+		"name": "Liste 2",
+		"language": "fr-CA",
+		"words": [
+			"ce", "ici", "un été", "oui", "non", "le pas", "par", "pour"
+		]
+	},
+	{
+		"id": 2,
+		"name": "Liste 3",
+		"language": "fr-CA",
+		"words": [
+			"au", "aux", "avec", "leur", "leurs", "la peur", "enfin", "encore", "entre"
+		]
+	},
+	{
+		"id": 3,
+		"name": "Liste 4",
+		"language": "fr-CA",
+		"words": [
+			"la banane", "dire", "la nature", "la tante", "un élève", "une élève", "la patate", "vite", "le malade", "la malade", "malade", "la lecture", "la vie", "la rue"
+		]
+	},
+	{
+		"id": 4,
+		"name": "Liste 5",
+		"language": "fr-CA",
+		"words": [
+			"près", "après", "très", "peut-être", "la prière", "même", "ces", "des", "les", "dès", "cher", "chère"
+		]
+	},
+	{
+		"id": 5,
+		"name": "Liste 6",
+		"language": "fr-CA",
+		"words": [
+			"un oncle", "monter", "la chanson", "donc", "le monstre", "répondre", "le ballon", "le pantalon", "bonjour", "contre"
+		]
+	},
+	{
+		"id": 6,
+		"name": "Liste 7",
+		"language": "fr-CA",
+		"words": [
+			"surtout", "partout", "souvent", "sous", "toujours", "alors", "devant", "avant", "longtemps", "demain", "début"
+		]
+	},
+	{
+		"id": 7,
+		"name": "Liste 8",
+		"language": "fr-CA",
+		"words": [
+			"moi",
+			"toi",
+			"voilà",
+			"là",
+			"savoir",
+			"verbe avoir",
+			"j'ai",
+			"tu as",
+			"il a",
+			"elle a",
+			"nous avons",
+			"vous avez",
+			"ils ont",
+			"elles ont"
+		]
+	},
+	{
+		"id": 8,
 		"name": "Liste 9",
 		"language": "fr-CA",
 		"words": [
@@ -18,7 +95,62 @@
 		]
 	},
 	{
-		"id": 1,
+		"id": 9,
+		"name": "Liste 10",
+		"language": "fr-CA",
+		"words": [
+			"celui",
+			"suivre",
+			"puis",
+			"la truie",
+			"verbe être",
+			"je suis",
+			"tu es",
+			"il est",
+			"elle est",
+			"nous sommes",
+			"vous êtes",
+			"ils sont"
+		]
+	},
+	{
+		"id": 10,
+		"name": "Liste 11",
+		"language": "fr-CA",
+		"words": [
+			"ensuite",
+			"entendre",
+			"le moment",
+			"la jument",
+			"vraiment",
+			"comment",
+			"pendant",
+			"prendre",
+			"content",
+			"contente",
+			"méchant",
+			"méchante"
+		]
+	},
+	{
+		"id": 11,
+		"name": "Liste 12",
+		"language": "fr-CA",
+		"words": [
+			"maintenant",
+			"moins",
+			"vingt",
+			"loin",
+			"le sapin",
+			"le lutin",
+			"enfin",
+			"soudain",
+			"coquin",
+			"vilain"
+		]
+	},
+	{
+		"id": 12,
 		"name": "Liste 13",
 		"language": "fr-CA",
 		"words": [
@@ -29,19 +161,6 @@
 			"déjà",
 			"la cheminée",
 			"une idée"
-		]
-	},
-	{
-		"id": 3,
-		"name": "English 1",
-		"language": "en-US",
-		"words": [
-			"cat",
-			"dog",
-			"bird",
-			"fish",
-			"horse",
-			"cow"
 		]
 	}
 ]
