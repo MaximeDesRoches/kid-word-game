@@ -162,5 +162,13 @@
 			"la cheminée",
 			"une idée"
 		]
+	},
+	{
+		"id": 9999,
+		"name": "DEBUG",
+		"language": "fr-CA",
+		"words": [
+			"test"
+		]
 	}
 ]

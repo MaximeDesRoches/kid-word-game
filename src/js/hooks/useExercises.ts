@@ -26,6 +26,9 @@ export default function useExercises() {
 }
 
 export function useExercise(id: number) {
-	const { list } = useExercises();
-	return id != undefined && list.find(exercise => exercise.id === id);
+	const { list, isLoaded } = useExercises();
+	return {
+		exercise: id != undefined && list.find(exercise => exercise.id === id),
+		isLoaded
+	};
 }

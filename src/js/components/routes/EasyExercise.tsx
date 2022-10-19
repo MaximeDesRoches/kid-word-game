@@ -1,10 +1,10 @@
 import React, { memo, useCallback, useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useExercise } from "../../hooks/useExercises";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRotateLeft, faBullhorn } from '@fortawesome/pro-regular-svg-icons';
+import { faArrowAltCircleLeft, faArrowLeft, faArrowRotateLeft, faBullhorn } from '@fortawesome/pro-regular-svg-icons';
 import useVoice from "../../hooks/useVoice";
-import { EXCLAMATIONS } from "../../Constants";
+import { EXCLAMATIONS, ROUTES } from "../../Constants";
 import randomArrayItem from "../../utils/randomArrayItem";
 
 type EasyExerciseProps = {
@@ -13,7 +13,7 @@ type EasyExerciseProps = {
 
 function EasyExercise() {
 	const { id } = useParams();
-	const exercise = useExercise(parseInt(id));
+	const { exercise } = useExercise(parseInt(id));
 
 	const { words } = exercise || {};
 	const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -59,7 +59,7 @@ function EasyExercise() {
 		ref.current?.focus();
 	}
 
-	const blocks = Array.from({ length: currentWord.length }).map((_, index) => {
+	const blocks = currentWord && Array.from({ length: currentWord.length }).map((_, index) => {
 		const letter = input[index] || (index === input.length ? '_' : '');
 		return (
 			<div key={index} className={`card block ${currentWord[index] === ' ' ? 'space' : ''}`}>
@@ -80,19 +80,32 @@ function EasyExercise() {
 	
 	return exercise && (
 		<div className="easy-exercise">
-			<div className="card hint" onClick={onClickWord}>
-				{currentWord} <span className="icon"><FontAwesomeIcon icon={faBullhorn} /></span>
-			</div>
-			<div className="answer">
-				<input ref={ref} title="answer" className="hidden" maxLength={currentWord?.length || 0} type="text" value={input} onKeyDown={(e) => e.key === 'Enter' && onSubmit()} onChange={(e) => setInput(e.currentTarget.value)} autoFocus />
+			{ currentWord && 
+				<>
+					<div className="card hint" onClick={onClickWord}>
+						{currentWord} <span className="icon"><FontAwesomeIcon icon={faBullhorn} /></span>
+					</div>
+					<div className="answer">
+						<input ref={ref} title="answer" className="hidden" maxLength={currentWord?.length || 0} type="text" value={input} onKeyDown={(e) => e.key === 'Enter' && onSubmit()} onChange={(e) => setInput(e.currentTarget.value)} autoFocus />
 
-				<div className="blocks">
-					{blocks}
-					<div className="card block reset" onClick={onClickReset}><FontAwesomeIcon icon={faArrowRotateLeft} /></div>
-					<div className="card block listen" onClick={() => sayWord(input)}><FontAwesomeIcon icon={faBullhorn} /></div>
+						<div className="blocks">
+							{blocks}
+							<div className="card block reset" onClick={onClickReset}><FontAwesomeIcon icon={faArrowRotateLeft} /></div>
+							<div className="card block listen" onClick={() => sayWord(input)}><FontAwesomeIcon icon={faBullhorn} /></div>
+						</div>
+					</div>
+					{input.length === currentWord.length && <button onClick={onSubmit} className="card done-button">Terminé!</button>}
+				</>
+			}
+			{!currentWord && (
+				<div className="end-frame">
+					<div className="card">Félicitations! Tu as terminé cet exercice.</div>
+					<div className="btns">
+						<Link className="card hoverable return" to={ROUTES.ROOT}><FontAwesomeIcon icon={faArrowLeft} /> Retour</Link>
+						<a className="card hoverable restart" onClick={() => setCurrentWordIndex(0)}><FontAwesomeIcon icon={faArrowRotateLeft} /> Recommencer</a>
+					</div>
 				</div>
-			</div>
-			{input.length === currentWord.length && <button onClick={onSubmit} className="card done-button">Terminé!</button>}
+			)}
 		</div>
 	);
 }

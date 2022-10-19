@@ -5,18 +5,15 @@ import { store } from './redux/config/store';
 
 import { HashRouter as Router } from 'react-router-dom';
 import App from './App';
-import { docReady } from './utils/docReady';
 
-docReady.then(() => {
-	const root = ReactDOM.createRoot(
-		document.getElementById('root') as HTMLElement,
-	);
+const root = ReactDOM.createRoot(
+	document.getElementById('root') as HTMLElement,
+);
 
-	root.render(
-		<Router>
-			<Provider store={store}>
-				<App />
-			</Provider>
-		</Router>,
-	);
-})
+root.render(
+	<Router>
+		<Provider store={store}>
+			<App />
+		</Provider>
+	</Router>,
+);

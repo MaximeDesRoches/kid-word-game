@@ -1,7 +1,7 @@
 import { faArrowLeft } from "@fortawesome/pro-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { memo } from "react";
-import { Link, Outlet, useMatch, useParams } from "react-router-dom";
+import { Link, Outlet, useMatch, useNavigate, useParams } from "react-router-dom";
 import { ROUTES } from "../../Constants";
 import { ExerciseLevels, useExercise } from "../../hooks/useExercises";
 
@@ -9,7 +9,15 @@ function Exercise() {
 	const { id } = useParams();
 	const isLevelSelection = useMatch(ROUTES.EXERCISE);
 
-	const exercise = useExercise(parseInt(id));
+	const { exercise, isLoaded } = useExercise(parseInt(id));
+	
+	const navigate = useNavigate();
+
+	if (!id || id === ':id' || (!exercise && isLoaded)) {
+		requestAnimationFrame(() => {
+			navigate(ROUTES.ROOT);
+		})
+	}
 
 	return exercise && (
 		<div className="exercise">
