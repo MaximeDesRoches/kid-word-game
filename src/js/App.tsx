@@ -7,6 +7,7 @@ import Layout from './components/Layout';
 import Exercise from './components/routes/Exercise';
 import { ExerciseLevels } from './hooks/useExercises';
 import EasyExercise from './components/routes/EasyExercise';
+import HardExercise from './components/routes/HardExercise';
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 				<Route index element={<Home />} />
 				<Route path={ROUTES.EXERCISE} element={<Exercise />}>
 					<Route path={ExerciseLevels.EASY} element={<EasyExercise />} />
+					<Route path={ExerciseLevels.HARD} element={<HardExercise />} />
 				</Route>
 			</Route>
 		</Routes>
