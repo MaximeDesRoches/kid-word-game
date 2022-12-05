@@ -164,11 +164,22 @@
 		]
 	},
 	{
-		"id": 9999,
-		"name": "DEBUG",
+		"id": 13,
+		"name": "Liste 14",
 		"language": "fr-CA",
 		"words": [
-			"test"
+			"chez",
+			"rester",
+			"tourner",
+			"penser",
+			"marier",
+			"trouver",
+			"danser",
+			"une année",
+			"un flocon",
+			"amuser",
+			"travailler",
+			"décorer"
 		]
 	}
 ]
