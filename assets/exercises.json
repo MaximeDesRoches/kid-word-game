@@ -181,5 +181,21 @@
 			"travailler",
 			"décorer"
 		]
+	},
+	{
+		"id": 14,
+		"name": "Liste 15",
+		"language": "fr-CA",
+		"words": [
+			"verbe faire",
+			"je fais",
+			"tu fais",
+			"il fait",
+			"elle fait",
+			"nous faisons",
+			"nous faites",
+			"ils font",
+			"elles font"
+		]
 	}
 ]
