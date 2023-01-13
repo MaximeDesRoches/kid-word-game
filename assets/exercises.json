@@ -193,9 +193,60 @@
 			"il fait",
 			"elle fait",
 			"nous faisons",
-			"nous faites",
+			"vous faites",
 			"ils font",
 			"elles font"
+		]
+	},
+	{
+		"id": 15,
+		"name": "Liste 16",
+		"language": "fr-CA",
+		"words": [
+			"derrière",
+			"mettre",
+			"celle",
+			"celles",
+			"cet",
+			"cette",
+			"tellement",
+			"le dessin",
+			"dessiner",
+			"la classe",
+			"difficile"
+		]
+	},
+	{
+		"id": 16,
+		"name": "Liste 17",
+		"language": "fr-CA",
+		"words": [
+			"treize",
+			"seize",
+			"la peine",
+			"la paire",
+			"la reine",
+			"vrai",
+			"vraie",
+			"jamais",
+			"la semaine",
+			"le travail",
+			"un chandail"
+		]
+	},
+	{
+		"id": 17,
+		"name": "Liste 18",
+		"language": "fr-CA",
+		"words": [
+			"verbe aller",
+			"je vais",
+			"tu vas",
+			"il va",
+			"elle va",
+			"vous allez",
+			"ils vont",
+			"elles vont"
 		]
 	}
 ]
