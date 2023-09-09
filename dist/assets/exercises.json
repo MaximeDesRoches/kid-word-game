@@ -181,5 +181,27 @@
 			"travailler",
 			"décorer"
 		]
+	},
+	{
+		"id": 14,
+		"name": "3e Année: Liste 1",
+		"language": "fr-CA",
+		"words": [
+			"abri",
+			"avril",
+			"car",
+			"cri",
+			"fil",
+			"mal",
+			"mari",
+			"mur",
+			"or",
+			"pin",
+			"mourir",
+			"son",
+			"souvent",
+			"tour",
+			"trou"
+		]
 	}
 ]
