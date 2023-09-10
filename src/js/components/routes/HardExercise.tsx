@@ -46,7 +46,7 @@ function HardExercise() {
 			const utterance = new SpeechSynthesisUtterance(word || "");
 			utterance.lang = exercise?.language || "en-US";
 			utterance.voice = voice;
-			utterance.rate = 1;
+			utterance.rate = 0.8;
 			speechSynthesis.speak(utterance);
 		}
 	}, [voice]);

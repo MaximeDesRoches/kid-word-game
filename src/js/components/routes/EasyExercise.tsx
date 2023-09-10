@@ -2,7 +2,7 @@ import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useExercise } from "../../hooks/useExercises";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowAltCircleLeft, faArrowLeft, faArrowRotateLeft, faBullhorn } from '@fortawesome/pro-regular-svg-icons';
+import { faArrowLeft, faArrowRotateLeft, faBullhorn } from '@fortawesome/pro-regular-svg-icons';
 import useVoice from "../../hooks/useVoice";
 import { EXCLAMATIONS, ROUTES } from "../../Constants";
 import randomArrayItem from "../../utils/randomArrayItem";
@@ -44,7 +44,7 @@ function EasyExercise() {
 			const utterance = new SpeechSynthesisUtterance(word || "");
 			utterance.lang = exercise?.language || "en-US";
 			utterance.voice = voice;
-			utterance.rate = 1;
+			utterance.rate = 0.8;
 			speechSynthesis.speak(utterance);
 		}
 	}, [voice]);
@@ -83,7 +83,7 @@ function EasyExercise() {
 			{ currentWord && 
 				<>
 					<div className="card hint" onClick={onClickWord}>
-						{currentWord} <span className="icon"><FontAwesomeIcon icon={faBullhorn} /></span>
+						{currentWord} <span className="icon"><FontAwesomeIcon onClick={() => sayWord(currentWord)} icon={faBullhorn} /></span>
 					</div>
 					<div className="answer">
 						<input ref={ref} title="answer" className="hidden" maxLength={currentWord?.length || 0} type="text" value={input} onKeyDown={(e) => e.key === 'Enter' && onSubmit()} onChange={(e) => setInput(e.currentTarget.value)} autoFocus />
