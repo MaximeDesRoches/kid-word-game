@@ -42,6 +42,7 @@ function EasyExercise() {
 	const sayWord = useCallback((word:string) => {
 		if (voice) {
 			const utterance = new SpeechSynthesisUtterance(word || "");
+			console.log(utterance);
 			utterance.lang = exercise?.language || "en-US";
 			utterance.voice = voice;
 			utterance.rate = 0.8;

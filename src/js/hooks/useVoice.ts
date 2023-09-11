@@ -7,7 +7,7 @@ export default function useVoice(language = "en-US") {
 
 	useEffect(() => {
 		if (voices.length === 0) {
-			speechSynthesis.getVoices();
+			setVoices(speechSynthesis.getVoices());
 			speechSynthesis.onvoiceschanged = () => {
 				voicesList = speechSynthesis.getVoices();
 				setVoices(speechSynthesis.getVoices());
