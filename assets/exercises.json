@@ -198,7 +198,7 @@
 	},
 	{
 		"id": 14,
-		"name": "Liste 15",
+		"name": "Verbe faire",
 		"tags": [],
 		"language": "fr-CA",
 		"words": [
@@ -215,6 +215,21 @@
 	},
 	{
 		"id": 15,
+		"name": "Verbe aller",
+		"language": "fr-CA",
+		"words": [
+			"verbe aller",
+			"je vais",
+			"tu vas",
+			"il va",
+			"elle va",
+			"nous allons",
+			"vous allez",
+			"ils vont"
+		]
+	},
+	{
+		"id": 16,
 		"name": "3e Année: Liste 1",
 		"language": "fr-CA",
 		"words": [
