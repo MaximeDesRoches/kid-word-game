@@ -230,6 +230,22 @@
 	},
 	{
 		"id": 16,
+		"name": "Verbe avoir",
+		"language": "fr-CA",
+		"words": [
+			"verbe avoir",
+			"j'ai",
+			"tu as",
+			"il a",
+			"elle a",
+			"nous avons",
+			"vous avez",
+			"ils ont",
+			"elles ont"
+		]
+	},
+	{
+		"id": 17,
 		"name": "3e Année: Liste 1",
 		"language": "fr-CA",
 		"words": [
