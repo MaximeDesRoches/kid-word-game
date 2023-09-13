@@ -265,5 +265,64 @@
 			"tour",
 			"trou"
 		]
+	},
+	{
+		"id": 18,
+		"name": "3e Année: Liste 2",
+		"language": "fr-CA",
+		"words": [
+			"barbe",
+			"conte",
+			"contre",
+			"course",
+			"date",
+			"demi",
+			"demie",
+			"dur",
+			"dure",
+			"jouent",
+			"libre",
+			"mine",
+			"minute",
+			"pile"
+		]
+	},
+	{
+		"id": 19,
+		"name": "3e Année: Liste 3",
+		"language": "fr-CA",
+		"words": [
+			"groupe",
+			"juste",
+			"partie",
+			"poche",
+			"poudre",
+			"riche",
+			"rire",
+			"rire",
+			"soie",
+			"sucre",
+			"triste",
+			"ventre"
+		]
+	},
+	{
+		"id": 20,
+		"name": "3e Année: Liste 4",
+		"language": "fr-CA",
+		"words": [
+			"adulte",
+			"costume",
+			"écrire",
+			"ferme",
+			"jeune",
+			"lèvre",
+			"machine",
+			"maladie",
+			"murmure",
+			"rivière",
+			"timide",
+			"vue"
+		]
 	}
 ]
