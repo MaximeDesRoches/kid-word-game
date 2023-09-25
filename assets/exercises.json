@@ -324,5 +324,22 @@
 			"timide",
 			"vue"
 		]
+	},
+	{
+		"id": 21,
+		"name": "Verbe aimer",
+		"language": "fr-CA",
+		"words": [
+			"verbe aimer",
+			"j'aime",
+			"tu aimes",
+			"il aime",
+			"elle aime",
+			"on aime",
+			"nous aimons",
+			"vous avons",
+			"ils aiment",
+			"elles aiment"
+		]
 	}
 ]
