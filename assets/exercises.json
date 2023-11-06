@@ -341,5 +341,27 @@
 			"ils aiment",
 			"elles aiment"
 		]
+	},
+	{
+		"id": 21,
+		"name": "3e Année: Liste 8",
+		"language": "fr-CA",
+		"words": [
+			"argent",
+			"chant",
+			"courant",
+			"court",
+			"courte",
+			"doigt",
+			"méchant",
+			"méchante",
+			"ouvert",
+			"ouverte",
+			"part",
+			"prix",
+			"sabot",
+			"salut",
+			"sourcil"
+		]
 	}
 ]
