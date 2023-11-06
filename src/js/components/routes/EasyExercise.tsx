@@ -45,7 +45,7 @@ function EasyExercise() {
 			console.log(utterance);
 			utterance.lang = exercise?.language || "en-US";
 			utterance.voice = voice;
-			utterance.rate = 0.8;
+			utterance.rate = 0.9;
 			speechSynthesis.speak(utterance);
 		}
 	}, [voice]);
@@ -87,7 +87,7 @@ function EasyExercise() {
 						{currentWord} <span className="icon"><FontAwesomeIcon onClick={() => sayWord(currentWord)} icon={faBullhorn} /></span>
 					</div>
 					<div className="answer">
-						<input ref={ref} title="answer" className="hidden" maxLength={currentWord?.length || 0} type="text" value={input} onKeyDown={(e) => e.key === 'Enter' && onSubmit()} onChange={(e) => setInput(e.currentTarget.value)} autoFocus />
+						<input ref={ref} title="answer" className="hidden" maxLength={currentWord?.length || 0} type="text" value={input} onKeyDown={(e) => e.key === 'Enter' && onSubmit()} onChange={(e) => setInput(e.currentTarget.value)} autoFocus autoCapitalize="off" />
 
 						<div className="blocks">
 							{blocks}

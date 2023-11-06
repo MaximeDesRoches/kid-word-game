@@ -198,7 +198,7 @@
 	},
 	{
 		"id": 14,
-		"name": "Liste 15",
+		"name": "Verbe faire",
 		"tags": [],
 		"language": "fr-CA",
 		"words": [
@@ -215,6 +215,37 @@
 	},
 	{
 		"id": 15,
+		"name": "Verbe aller",
+		"language": "fr-CA",
+		"words": [
+			"verbe aller",
+			"je vais",
+			"tu vas",
+			"il va",
+			"elle va",
+			"nous allons",
+			"vous allez",
+			"ils vont"
+		]
+	},
+	{
+		"id": 16,
+		"name": "Verbe avoir",
+		"language": "fr-CA",
+		"words": [
+			"verbe avoir",
+			"j'ai",
+			"tu as",
+			"il a",
+			"elle a",
+			"nous avons",
+			"vous avez",
+			"ils ont",
+			"elles ont"
+		]
+	},
+	{
+		"id": 17,
 		"name": "3e Année: Liste 1",
 		"language": "fr-CA",
 		"words": [
@@ -233,6 +264,104 @@
 			"souvent",
 			"tour",
 			"trou"
+		]
+	},
+	{
+		"id": 18,
+		"name": "3e Année: Liste 2",
+		"language": "fr-CA",
+		"words": [
+			"barbe",
+			"conte",
+			"contre",
+			"course",
+			"date",
+			"demi",
+			"demie",
+			"dur",
+			"dure",
+			"jouent",
+			"libre",
+			"mine",
+			"minute",
+			"pile"
+		]
+	},
+	{
+		"id": 19,
+		"name": "3e Année: Liste 3",
+		"language": "fr-CA",
+		"words": [
+			"groupe",
+			"juste",
+			"partie",
+			"poche",
+			"poudre",
+			"riche",
+			"rire",
+			"rire",
+			"soie",
+			"sucre",
+			"triste",
+			"ventre"
+		]
+	},
+	{
+		"id": 20,
+		"name": "3e Année: Liste 4",
+		"language": "fr-CA",
+		"words": [
+			"adulte",
+			"costume",
+			"écrire",
+			"ferme",
+			"jeune",
+			"lèvre",
+			"machine",
+			"maladie",
+			"murmure",
+			"rivière",
+			"timide",
+			"vue"
+		]
+	},
+	{
+		"id": 21,
+		"name": "Verbe aimer",
+		"language": "fr-CA",
+		"words": [
+			"verbe aimer",
+			"j'aime",
+			"tu aimes",
+			"il aime",
+			"elle aime",
+			"on aime",
+			"nous aimons",
+			"vous avons",
+			"ils aiment",
+			"elles aiment"
+		]
+	},
+	{
+		"id": 21,
+		"name": "3e Année: Liste 8",
+		"language": "fr-CA",
+		"words": [
+			"argent",
+			"chant",
+			"courant",
+			"court",
+			"courte",
+			"doigt",
+			"méchant",
+			"méchante",
+			"ouvert",
+			"ouverte",
+			"part",
+			"prix",
+			"sabot",
+			"salut",
+			"sourcil"
 		]
 	}
 ]

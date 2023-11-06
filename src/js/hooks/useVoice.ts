@@ -15,5 +15,9 @@ export default function useVoice(language = "en-US") {
 		}
 	}, []);
 
-	return voices.find((voice) => voice.lang === language);
+	const correctLanguageVoices = voices.filter((voice) => voice.lang === language);
+
+	const amelie = correctLanguageVoices?.find((voice) => voice.name.includes("Amélie"));
+
+	return amelie || correctLanguageVoices?.[0];
 }

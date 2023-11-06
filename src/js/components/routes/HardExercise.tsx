@@ -46,7 +46,7 @@ function HardExercise() {
 			const utterance = new SpeechSynthesisUtterance(word || "");
 			utterance.lang = exercise?.language || "en-US";
 			utterance.voice = voice;
-			utterance.rate = 0.8;
+			utterance.rate = 0.9;
 			speechSynthesis.speak(utterance);
 		}
 	}, [voice]);
@@ -92,7 +92,7 @@ function HardExercise() {
 						<span style={{ opacity: showHint ? 1 : 0 }}>{currentWord}</span> <span className="icon"><FontAwesomeIcon icon={faBullhorn} onClick={onClickWord} /></span> <span className="icon"><FontAwesomeIcon icon={showHint ? faEyeSlash : faEye} onClick={onClickShowHint} /></span>
 					</div>
 					<div className="answer">
-						<input ref={ref} title="answer" className="hidden" maxLength={currentWord?.length || 0} type="text" value={input} onKeyDown={(e) => e.key === 'Enter' && onSubmit()} onChange={(e) => setInput(e.currentTarget.value)} autoFocus />
+						<input ref={ref} title="answer" className="hidden" maxLength={currentWord?.length || 0} type="text" value={input} onKeyDown={(e) => e.key === 'Enter' && onSubmit()} onChange={(e) => setInput(e.currentTarget.value)} autoFocus autoCapitalize="off" />
 
 						<div className="blocks">
 							{blocks}
