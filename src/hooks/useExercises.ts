@@ -12,7 +12,6 @@ export default function useExercises() {
 
   useEffect(() => {
     if (!isLoaded) {
-      console.log("Getting exercises");
       getExercises();
     }
   }, [getExercises, isLoaded]);
