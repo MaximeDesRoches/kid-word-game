@@ -1,9 +1,16 @@
+
 html {
+	background-color: #8EC5FC;
+	background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+	min-height: 100vh;
 	font-size: 100%;
 	background-size: 100% auto;
 }
 
 body {
+	background-color: transparent;
+	color: #344b63;
+	font-size: 20px;
 	position: relative;
 	-webkit-overflow-scrolling: touch;
 	background-color: var(--color-background-main);
@@ -11,6 +18,10 @@ body {
 	&.opened {
 		overflow: hidden;
 	}
+}
+
+h1 {
+  font-size: 2rem;
 }
 
 .main-content {

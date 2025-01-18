@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 let voicesList: SpeechSynthesisVoice[] | (() => SpeechSynthesisVoice[]) = [];
 
-export default function useVoice(language = "en-US") {
+export default function useVoice(language = "fr-CA") {
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>(voicesList);
 
   useEffect(() => {
@@ -23,5 +23,15 @@ export default function useVoice(language = "en-US") {
     voice.name.includes("Amélie")
   );
 
-  return amelie || correctLanguageVoices?.[0];
+  return {
+    say: (sentence: string) => {
+      if (correctLanguageVoices.length > 0) {
+        const utterance = new SpeechSynthesisUtterance(sentence);
+        utterance.lang = language;
+        utterance.voice = amelie || correctLanguageVoices[0];
+        utterance.rate = 0.9;
+        speechSynthesis.speak(utterance);
+      }
+    },
+  };
 }

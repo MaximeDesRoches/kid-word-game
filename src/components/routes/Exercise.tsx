@@ -1,46 +1,157 @@
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { memo, useEffect, useRef, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useExercise } from "../../hooks/useExercises";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { memo } from "react";
-import { Link, Outlet, useMatch, useNavigate, useParams } from "react-router-dom";
-import { ROUTES } from "../../Constants";
-import { ExerciseLevels, useExercise } from "../../hooks/useExercises";
+import {
+  faArrowLeft,
+  faArrowRotateLeft,
+  faEye,
+  faEyeSlash,
+} from "@fortawesome/free-solid-svg-icons";
+import useVoice from "../../hooks/useVoice";
+import { EXCLAMATIONS, ROUTES } from "../../Constants";
+import randomArrayItem from "../../utils/randomArrayItem";
+import TextToSpeechButton from "../ui/TextToSpeechButton";
 
-function Exercise() {
-	const { id = '' } = useParams();
-	const isLevelSelection = useMatch(ROUTES.EXERCISE);
+function Exercise({ hasHint = true }: { hasHint: boolean }) {
+  const { id } = useParams();
+  const { exercise } = useExercise(id ? parseInt(id) : null);
+  const { say } = useVoice(exercise?.language);
 
-	const { exercise, isLoaded } = useExercise(parseInt(id));
-	
-	const navigate = useNavigate();
+  const { words } = exercise || {};
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const currentWord = words && words[currentWordIndex];
 
-	if (!id || id === ':id' || (!exercise && isLoaded)) {
-		requestAnimationFrame(() => {
-			navigate(ROUTES.ROOT);
-		})
-	}
+  const [showWord, setShowWord] = useState(!hasHint);
 
-	return id && exercise && (
-		<div className="exercise">
-			<div className="container">
-				<div className="col-12">
-					<h1 className="title">{exercise.name} <Link to={ROUTES.ROOT} className="card back hoverable"><FontAwesomeIcon icon={faArrowLeft} /> Retour</Link></h1>
-					{isLevelSelection && <div className="levels">
-						{Object.entries(ExerciseLevels).map(([code, level]) => (
-							<Link
-								to={ROUTES.EXERCISE.replace(':id', id) + '/' + ROUTES.DIFFICULTY.replace(':difficulty', level).replace(':level', level)}
-								className={`card hoverable level-card level-card-${code.toLowerCase()}`}
-								key={code}
-							>
-								<div className="title">{level}</div>
-							</Link>
-						))}
-					</div>}
+  const ref = useRef<HTMLInputElement>(null);
 
-					<Outlet />
-				</div>
-			</div>
-		</div>
-	);
+  const [input, setInput] = useState("");
+
+  useEffect(() => {
+    ref.current?.focus();
+
+    const onClick = () => {
+      ref.current?.focus();
+    };
+
+    window.addEventListener("click", onClick);
+
+    return () => {
+      window.removeEventListener("click", onClick);
+    };
+  }, []);
+
+  const onClickReset = () => {
+    setInput("");
+    ref.current?.focus();
+  };
+
+  const blocks =
+    currentWord &&
+    Array.from({ length: currentWord.word.length }).map((_, index) => {
+      const letter = input[index] || (index === input.length ? "_" : "");
+      return (
+        <div
+          key={index}
+          className={`card block ${
+            currentWord.word[index] === " " ? "space" : ""
+          }`}
+        >
+          {letter}
+        </div>
+      );
+    });
+
+  const onSubmit = () => {
+    if (!currentWord) return;
+
+    if (currentWord.word === input) {
+      say(randomArrayItem(EXCLAMATIONS.SUCCESS));
+      setInput("");
+      setCurrentWordIndex((v) => v + 1);
+    } else {
+      say(randomArrayItem(EXCLAMATIONS.FAILURE));
+    }
+  };
+
+  return (
+    exercise && (
+      <div className="exercise">
+        {currentWord && (
+          <>
+            <div className="card hint">
+              <span>
+                {showWord
+                  ? currentWord.word
+                  : currentWord.word.replace(/./g, "-")}
+              </span>
+              <TextToSpeechButton
+                language={exercise.language}
+                word={currentWord.textToSpeech || currentWord.word}
+              />
+              <span className="icon">
+                <FontAwesomeIcon
+                  icon={showWord ? faEyeSlash : faEye}
+                  onClick={() => setShowWord((v) => !v)}
+                />
+              </span>
+            </div>
+            <div className="answer">
+              <input
+                ref={ref}
+                title="answer"
+                className="hidden"
+                maxLength={currentWord.word.length || 0}
+                type="text"
+                value={input}
+                onKeyDown={(e) => e.key === "Enter" && onSubmit()}
+                onChange={(e) => setInput(e.currentTarget.value)}
+                autoFocus
+                autoCapitalize="off"
+              />
+
+              <div className="blocks">
+                {blocks}
+                <div className="card block reset" onClick={onClickReset}>
+                  <FontAwesomeIcon icon={faArrowRotateLeft} />
+                </div>
+                <div className="card block listen">
+                  <TextToSpeechButton
+                    word={input}
+                    language={exercise.language}
+                  />
+                </div>
+              </div>
+            </div>
+            {input.length === currentWord.word.length && (
+              <button onClick={onSubmit} className="card done-button">
+                Terminé!
+              </button>
+            )}
+          </>
+        )}
+        {!currentWord && (
+          <div className="end-frame">
+            <div className="card">
+              Félicitations! Tu as terminé cet exercice.
+            </div>
+            <div className="btns">
+              <Link className="card hoverable return" to={ROUTES.ROOT}>
+                <FontAwesomeIcon icon={faArrowLeft} /> Retour
+              </Link>
+              <a
+                className="card hoverable restart"
+                onClick={() => setCurrentWordIndex(0)}
+              >
+                <FontAwesomeIcon icon={faArrowRotateLeft} /> Recommencer
+              </a>
+            </div>
+          </div>
+        )}
+      </div>
+    )
+  );
 }
 
 export default memo(Exercise);
