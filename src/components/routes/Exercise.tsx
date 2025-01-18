@@ -12,20 +12,17 @@ import useVoice from "../../hooks/useVoice";
 import { EXCLAMATIONS, ROUTES } from "../../Constants";
 import randomArrayItem from "../../utils/randomArrayItem";
 import TextToSpeechButton from "../ui/TextToSpeechButton";
+import Progress from "../ui/Progress";
 
 function Exercise({ hasHint = true }: { hasHint: boolean }) {
   const { id } = useParams();
   const { exercise } = useExercise(id ? parseInt(id) : null);
   const { say } = useVoice(exercise?.language);
-
   const { words } = exercise || {};
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const currentWord = words && words[currentWordIndex];
-
   const [showWord, setShowWord] = useState(!hasHint);
-
   const ref = useRef<HTMLInputElement>(null);
-
   const [input, setInput] = useState("");
 
   useEffect(() => {
@@ -78,6 +75,7 @@ function Exercise({ hasHint = true }: { hasHint: boolean }) {
   return (
     exercise && (
       <div className="exercise">
+        <Progress index={currentWordIndex} total={words?.length || 0} />
         {currentWord && (
           <>
             <div className="card hint">
