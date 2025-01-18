@@ -1,4 +1,0 @@
-AuthType Basic
-AuthName "Private Login"
-AuthUserFile /var/www/wordgame.master.staging.enclos.ca/public_html/.htpasswd
-Require valid-user
