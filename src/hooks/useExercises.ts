@@ -1,34 +1,32 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { IRootState, useAppDispatch } from "../redux/config/store";
-import { getExercises } from "../redux/exercises";
+import { useContext, useEffect } from "react";
+import { ExercisesContext } from "../context/ExercisesContext";
 
 export enum ExerciseLevels {
-	EASY = "facile",
-	NORMAL = "moyen",
-	HARD = "difficile",
+  EASY = "facile",
+  NORMAL = "moyen",
+  HARD = "difficile",
 }
 
 export default function useExercises() {
-	const dispatch = useAppDispatch();
-	const { list, loaded } = useSelector((state: IRootState) => state.exercises);
+  const { list, isLoaded, getExercises } = useContext(ExercisesContext);
 
-	useEffect(() => {
-		if (!loaded) {
-			dispatch(getExercises());
-		}
-	}, [dispatch, loaded]);
+  useEffect(() => {
+    if (!isLoaded) {
+      console.log("Getting exercises");
+      getExercises();
+    }
+  }, [getExercises, isLoaded]);
 
-	return {
-		list,
-		isLoaded: loaded
-	}
+  return {
+    list,
+    isLoaded: isLoaded,
+  };
 }
 
 export function useExercise(id: number | null) {
-	const { list, isLoaded } = useExercises();
-	return {
-		exercise: id ? list.find(exercise => exercise.id === id) : null,
-		isLoaded
-	};
+  const { list, isLoaded } = useExercises();
+  return {
+    exercise: id ? list.find((exercise) => exercise.id === id) : null,
+    isLoaded,
+  };
 }
