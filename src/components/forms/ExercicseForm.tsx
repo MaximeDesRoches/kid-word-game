@@ -32,7 +32,7 @@ export default function ExerciseForm({
   const hasChanges =
     JSON.stringify(exercise) !== JSON.stringify(form) || isNewFilled;
   const hasTitle = form.name.trim().length > 0;
-  const hasWords = form.words.length > 0;
+  const hasWords = form.words.length > 0 || isNewFilled;
   const canSave =
     hasChanges && hasTitle && hasWords && (isNewFilled || isNewBothEmpty);
 
