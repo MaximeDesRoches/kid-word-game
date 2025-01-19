@@ -27,17 +27,32 @@ export default function ExerciseForm({
   const [newTextToSpeech, setNewTextToSpeech] = useState("");
   const navigate = useNavigate();
 
+  const isNewFilled = newWord && newTextToSpeech;
+  const isNewBothEmpty = !newWord && !newTextToSpeech;
+  const hasChanges =
+    JSON.stringify(exercise) !== JSON.stringify(form) || isNewFilled;
+  const hasTitle = form.name.trim().length > 0;
+  const hasWords = form.words.length > 0;
+  const canSave =
+    hasChanges && hasTitle && hasWords && (isNewFilled || isNewBothEmpty);
+
   function onSave() {
+    const words = form.words.map(({ word, textToSpeech }) => {
+      return { textToSpeech, word: word.trim().toLocaleLowerCase() };
+    });
+
+    if (isNewFilled) {
+      words.push({
+        word: newWord.trim().toLocaleLowerCase(),
+        textToSpeech: newTextToSpeech,
+      });
+    }
+
     onSubmit({
       ...form,
-      words: form.words.map(({ word, textToSpeech }) => {
-        return { textToSpeech, word: word.trim().toLocaleLowerCase() };
-      }),
+      words,
     });
   }
-
-  const canSave =
-    JSON.stringify(exercise) !== JSON.stringify(form) && form.words.length > 0;
 
   return (
     exercise && (
