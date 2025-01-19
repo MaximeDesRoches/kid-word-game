@@ -36,7 +36,8 @@ export default function ExerciseForm({
     });
   }
 
-  const canSave = JSON.stringify(exercise) !== JSON.stringify(form);
+  const canSave =
+    JSON.stringify(exercise) !== JSON.stringify(form) && form.words.length > 0;
 
   return (
     exercise && (
