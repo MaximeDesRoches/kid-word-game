@@ -10,264 +10,294 @@
 @import "./website/layout/default";
 
 .title {
-	text-align: center;
+  text-align: center;
 }
 
 .exercise-grid {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 20px;
-	margin-bottom: 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 60px;
 
-	@media (max-width: 768px) {
-		gap: 10px;
-		margin-bottom: 30px;
-	}
+  @media (max-width: 768px) {
+    gap: 10px;
+    margin-bottom: 30px;
+  }
 }
 
 .exercise-card {
-	display: flex;
-	flex-direction: column;
-	text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 
-	.title {
-		font-size: 1.5rem;
-		font-weight: bold;
-	}
+  .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
 
-	.words {
-		margin: 20px 0;
-		display: none;
-	}
+  .words {
+    margin: 20px 0;
+    display: none;
+  }
 
-	.button {
-		margin-top: auto;
-		display: none;
-	}
+  .button {
+    margin-top: auto;
+    display: none;
+  }
 
-	@media (max-width: 768px) {
-		.title {
-			font-size: 1rem;
-		}
+  .edit-btn {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    bottom: 14px;
+    right: 8px;
+    color: black;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
 
-		.words {
-			margin: 10px 0;
-		}
-	}
+    svg {
+      width: 100%;
+      height: auto;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .title {
+      font-size: 1rem;
+    }
+
+    .words {
+      margin: 10px 0;
+    }
+  }
 }
 
 .card {
-	--color-rgb: 255, 255, 255;
-	background: rgb(var(--color-rgb));
-	box-shadow: 0 8px 0 0 rgba(var(--color-rgb), 0.5);
-	border-radius: 20px;
-	padding: 20px;
-	color: #000;
-	text-decoration: none;
-	
-	&.hoverable {
-		cursor: pointer;
-		transform: translate(0, 0);
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
+  --color-rgb: 255, 255, 255;
+  background: rgb(var(--color-rgb));
+  box-shadow: 0 8px 0 0 rgba(var(--color-rgb), 0.5);
+  border-radius: 20px;
+  padding: 20px;
+  color: #000;
+  text-decoration: none;
+  
+  &.hoverable {
+    cursor: pointer;
+    transform: translate(0, 0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-		&:hover {
-			transform: translate(0, 5px);
-			box-shadow: 0 3px 0 0 rgba(var(--color-rgb), 0.5);
-		}
-	}
+    &:hover {
+      transform: translate(0, 5px);
+      box-shadow: 0 3px 0 0 rgba(var(--color-rgb), 0.5);
+    }
+  }
 
-	&:hover {
-		color: #000;
-		text-decoration: none;
-	}
+  &:hover {
+    color: #000;
+    text-decoration: none;
+  }
 
-	@media (max-width: 768px) {
-		padding: 10px;
-		border-radius: 10px;
-		box-shadow: 0 6px 0 0 rgba(var(--color-rgb), 0.5);
-	}
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 6px 0 0 rgba(var(--color-rgb), 0.5);
+  }
+}
+
+.new-exercise {
+  --color-rgb: 133, 255, 189;
 }
 
 .exercise-level {
-	.title {
-		position: relative;
+  .title {
+    position: relative;
 
-		.back {
-			font-size: 12px;
-			position: absolute;
-			top: 15px;
-			left: 0;
-			display: flex;
-			gap: 6px;
-			align-items: center;
+    .back {
+      font-size: 12px;
+      position: absolute;
+      top: 15px;
+      left: 0;
+      display: flex;
+      gap: 6px;
+      align-items: center;
 
-			padding: 10px 20px;
+      padding: 10px 20px;
 
-			--color-rgb: 230, 230, 230;
+      --color-rgb: 230, 230, 230;
 
-			@media (max-width: 768px) {
-				padding: 5px 10px;
-				gap: 3px;
-			}
-		}
-	}
+      @media (max-width: 768px) {
+        padding: 5px 10px;
+        gap: 3px;
+      }
+    }
+  }
 
-	.levels {
-		display: flex;
-		gap: 20px;
-		justify-content: center;
+  .levels {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
 
-		@media (max-width: 768px) {
-			gap: 10px;
-		}
-	}
+    @media (max-width: 768px) {
+      gap: 10px;
+    }
+  }
 
-	.level-card {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-weight: bold;
+  .level-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
 
-		&-easy {
-			--color-rgb: 133, 255, 189;
-		}
+    &-easy {
+      --color-rgb: 133, 255, 189;
+    }
 
-		&-normal {
-			--color-rgb: 247, 206, 104;
-			display: none;
-		}
+    &-normal {
+      --color-rgb: 247, 206, 104;
+      display: none;
+    }
 
-		&-hard {
-			--color-rgb: 255, 37, 37;
-		}
-	}
+    &-hard {
+      --color-rgb: 255, 37, 37;
+    }
+  }
 }
 
 .exercise {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-	.end-frame {
-		text-align: center;
+  .end-frame {
+    text-align: center;
 
-		.btns {
-			display: flex;
-			gap: 20px;
-			margin-top: 40px;
-			justify-content: center;
+    .btns {
+      display: flex;
+      gap: 20px;
+      margin-top: 40px;
+      justify-content: center;
 
-			@media (max-width: 768px) {
-				gap: 10px;
-				margin-top: 20px;
-			}
+      @media (max-width: 768px) {
+        gap: 10px;
+        margin-top: 20px;
+      }
 
-			.card {
-				padding: 10px 20px;
+      .card {
+        padding: 10px 20px;
 
-				@media (max-width: 768px) {
-					padding: 5px 10px;
-				}
-			}
+        @media (max-width: 768px) {
+          padding: 5px 10px;
+        }
+      }
 
-			.return {
-				--color-rgb: 230, 230, 230;
-			}
+      .return {
+        --color-rgb: 230, 230, 230;
+      }
 
-			.restart {
-				--color-rgb: 247, 206, 104;
-			}
-		}
-	}
+      .restart {
+        --color-rgb: 247, 206, 104;
+      }
+    }
+  }
 
-	.hint {
+  .hint {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 6px;
-		font-size: 48px;
-		margin: 0;
+    font-size: 48px;
+    margin: 0;
 
-		.icon {
-			font-size: 50%;
-			vertical-align: middle;
-			opacity: 0.3;
-		}
+    .icon {
+      font-size: 50%;
+      vertical-align: middle;
+      opacity: 0.3;
+    }
 
-		@media (max-width: 768px) {
-			font-size: 24px;
-		}
-	}
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+  }
 
-	.answer {
-		position: relative;
-		margin-top: 40px;
-		
-		.hidden {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			opacity: 0;
-		}
+  .answer {
+    position: relative;
+    margin-top: 40px;
+    
+    .hidden {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
 
-		.blocks {
-			display: flex;
-			justify-content: center;
-			gap: 2px;
-		}
+    .blocks {
+      display: flex;
+      justify-content: center;
+      gap: 2px;
+    }
 
-		.block {
-			width: 75px;
-			height: 75px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-size: 2rem;
-			font-weight: 900;
+    .block {
+      width: 75px;
+      height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 900;
 
-			&.space {
-				background: transparent;
-				box-shadow: none;
-			}
-		}
+      &.space {
+        background: transparent;
+        box-shadow: none;
+      }
+    }
 
-		.reset {
-			--color-rgb: 255, 222, 233;
-			margin-left: 10px;
-			position: relative;
-			z-index: 10;
-		}
+    .reset {
+      --color-rgb: 255, 222, 233;
+      margin-left: 10px;
+      position: relative;
+      z-index: 10;
+    }
 
-		.listen {
-			--color-rgb: 181, 255, 252;
-			margin-left: 10px;
-			position: relative;
-			z-index: 10;
-		}
+    .listen {
+      --color-rgb: 181, 255, 252;
+      margin-left: 10px;
+      position: relative;
+      z-index: 10;
+    }
 
-		@media (max-width: 768px) {
-			margin-top: 30px;
+    @media (max-width: 768px) {
+      margin-top: 30px;
 
-			.block {
-				width: 35px;
-				height: 35px;
-				font-size: 1rem;
-			}
-		}
-	}
+      .block {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+      }
+    }
+  }
 
-	.done-button {
-		display: inline-block;
-		margin-top: 40px;
-		--color-rgb: 133, 255, 189;
-		align-self: center;
+  .done-button {
+    display: inline-block;
+    margin-top: 40px;
+    --color-rgb: 133, 255, 189;
+    align-self: center;
 
-		@media (max-width: 768px) {
-			margin-top: 20px;
-			font-size: 70%;
-		}
-	}
+    @media (max-width: 768px) {
+      margin-top: 20px;
+      font-size: 70%;
+    }
+  }
 }
 
 .progress {
@@ -275,4 +305,45 @@
   justify-content: center;
   flex-wrap: wrap;
   margin: 10px auto 20px;
+}
+
+.form {
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .icon {
+      color: red;
+    }
+  }
+
+  .new {
+    display: flex;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+
+  .btns {
+    margin-top: 20px;
+
+    .ctn {
+      display: flex;
+      gap: 10px;
+
+      .save {
+        --color-rgb: 133, 255, 189;
+      }
+
+      .cancel {
+        --color-rgb: 255, 222, 233;
+      }
+    }
+  }
 }

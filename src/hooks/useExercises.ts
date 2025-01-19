@@ -22,7 +22,7 @@ export default function useExercises() {
   };
 }
 
-export function useExercise(id: number | null) {
+export function useExercise(id: string | null | undefined) {
   const { list, isLoaded } = useExercises();
   return {
     exercise: id ? list.find((exercise) => exercise.id === id) : null,

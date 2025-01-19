@@ -6,6 +6,8 @@ import Layout from "./components/Layout";
 import ExerciseLevel from "./components/routes/ExerciseLevel";
 import { ExerciseLevels } from "./hooks/useExercises";
 import Exercise from "./components/routes/Exercise";
+import Edit from "./components/routes/Edit";
+import Create from "./components/routes/Create";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
             element={<Exercise hasHint={true} />}
           />
         </Route>
+        <Route path={ROUTES.EDIT} element={<Edit />} />
+        <Route path={ROUTES.CREATE} element={<Create />} />
       </Route>
     </Routes>
   );

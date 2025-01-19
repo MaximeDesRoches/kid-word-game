@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
 import { ROUTES } from "../../Constants";
 import useExercises from "../../hooks/useExercises";
+import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
   const { list: exercises, isLoaded } = useExercises();
@@ -16,20 +18,30 @@ export default function Home() {
             {isLoaded &&
               exercises.map((exercise) => {
                 return (
-                  <Link
+                  <NavLink
                     to={ROUTES.EXERCISE.replace(":id", exercise.id.toString())}
                     key={exercise.id}
                     className="card hoverable exercise-card"
                   >
                     <div className="title">{exercise.name}</div>
 
-                    <div className="button">Pratiquer</div>
-                  </Link>
+                    {exercise.type === "local" ? (
+                      <NavLink
+                        to={ROUTES.EDIT.replace(":id", exercise.id)}
+                        className="edit-btn"
+                      >
+                        <FontAwesomeIcon icon={faPencil} />
+                      </NavLink>
+                    ) : null}
+                  </NavLink>
                 );
               })}
           </div>
         </div>
       </div>
+      <NavLink to={ROUTES.CREATE} className="card new-exercise hoverable">
+        <FontAwesomeIcon icon={faPlus} /> Nouvel Exercice
+      </NavLink>
     </div>
   );
 }

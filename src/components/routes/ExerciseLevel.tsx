@@ -15,7 +15,7 @@ function ExerciseLevel() {
   const { id = "" } = useParams();
   const isLevelSelection = useMatch(ROUTES.EXERCISE);
 
-  const { exercise, isLoaded } = useExercise(parseInt(id));
+  const { exercise, isLoaded } = useExercise(id);
 
   const navigate = useNavigate();
 

@@ -16,7 +16,7 @@ import Progress from "../ui/Progress";
 
 function Exercise({ hasHint = true }: { hasHint: boolean }) {
   const { id } = useParams();
-  const { exercise } = useExercise(id ? parseInt(id) : null);
+  const { exercise } = useExercise(id);
   const { say } = useVoice(exercise?.language);
   const { words } = exercise || {};
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
