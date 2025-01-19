@@ -1,37 +1,50 @@
 [
-	{
-		"id": 1,
-		"name": "Dictée PGL",
-		"language": "fr-CA",
-		"words": [
-			{ "word": "acheter", "textToSpeech": "acheter" },
-			{ "word": "aliment", "textToSpeech": "aliment" },
-			{ "word": "alimentation", "textToSpeech": "alimentation" },
-			{ "word": "apporter", "textToSpeech": "apporter" },
-			{ "word": "apprendre", "textToSpeech": "apprendre" },
-			{ "word": "assez", "textToSpeech": "assez" },
-			{ "word": "bouteille", "textToSpeech": "la bouteille" },
-			{ "word": "camion", "textToSpeech": "le camion" },
-			{ "word": "cuisine", "textToSpeech": "la cuisine" },
-			{ "word": "fière", "textToSpeech": "fière au féminin singulier" },
-			{ "word": "fier", "textToSpeech": "fier au masculin singulier" },
-			{ "word": "frais", "textToSpeech": "frais" },
-			{ "word": "fraîche", "textToSpeech": "fraîche" },
-			{ "word": "important", "textToSpeech": "important" },
-			{ "word": "marché", "textToSpeech": "le marché" },
-			{ "word": "meilleure", "textToSpeech": "meilleure au féminin singulier" },
-			{ "word": "meilleur", "textToSpeech": "meilleur au masculin singulier" },
-			{ "word": "métier", "textToSpeech": "le métier" },
-			{ "word": "nourriture", "textToSpeech": "la nourriture" },
-			{ "word": "offrir", "textToSpeech": "offrir" },
-			{ "word": "préférer", "textToSpeech": "préférer" },
-			{ "word": "produit", "textToSpeech": "le produit" },
-			{ "word": "repas", "textToSpeech": "le repas" },
-			{ "word": "restaurant", "textToSpeech": "le restaurant" },
-			{ "word": "réussir", "textToSpeech": "réussir" },
-			{ "word": "santé", "textToSpeech": "la santé" },
-			{ "word": "travailler", "textToSpeech": "travailler" },
-			{ "word": "viande", "textToSpeech": "la viande" }
-		]
-	}
+  {
+    "id": "1",
+    "name": "Dictée PGL",
+    "language": "fr-CA",
+    "words": [
+      { "word": "acheter", "textToSpeech": "acheter" },
+      { "word": "aliment", "textToSpeech": "aliment" },
+      { "word": "alimentation", "textToSpeech": "alimentation" },
+      { "word": "apporter", "textToSpeech": "apporter" },
+      { "word": "apprendre", "textToSpeech": "apprendre" },
+      { "word": "assez", "textToSpeech": "assez" },
+      { "word": "bouteille", "textToSpeech": "la bouteille" },
+      { "word": "camion", "textToSpeech": "le camion" },
+      { "word": "cuisine", "textToSpeech": "la cuisine" },
+      { "word": "fière", "textToSpeech": "fière au féminin singulier" },
+      { "word": "fier", "textToSpeech": "fier au masculin singulier" },
+      { "word": "frais", "textToSpeech": "frais" },
+      { "word": "fraîche", "textToSpeech": "fraîche" },
+      { "word": "important", "textToSpeech": "important" },
+      { "word": "marché", "textToSpeech": "le marché" },
+      { "word": "meilleure", "textToSpeech": "meilleure au féminin singulier" },
+      { "word": "meilleur", "textToSpeech": "meilleur au masculin singulier" },
+      { "word": "métier", "textToSpeech": "le métier" },
+      { "word": "nourriture", "textToSpeech": "la nourriture" },
+      { "word": "offrir", "textToSpeech": "offrir" },
+      { "word": "préférer", "textToSpeech": "préférer" },
+      { "word": "produit", "textToSpeech": "le produit" },
+      { "word": "repas", "textToSpeech": "le repas" },
+      { "word": "restaurant", "textToSpeech": "le restaurant" },
+      { "word": "réussir", "textToSpeech": "réussir" },
+      { "word": "santé", "textToSpeech": "la santé" },
+      { "word": "travailler", "textToSpeech": "travailler" },
+      { "word": "viande", "textToSpeech": "la viande" }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Edou Liste 10",
+    "language": "fr-CA",
+    "words": [
+      { "word": "huit", "textToSpeech": "acheter" },
+      { "word": "aliment", "textToSpeech": "aliment" },
+      { "word": "alimentation", "textToSpeech": "alimentation" },
+      { "word": "apporter", "textToSpeech": "apporter" },
+      { "word": "apprendre", "textToSpeech": "apprendre" },
+      { "word": "assez", "textToSpeech": "assez" }
+    ]
+  }
 ]
