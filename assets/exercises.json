@@ -39,12 +39,12 @@
     "name": "Edou Liste 10",
     "language": "fr-CA",
     "words": [
-      { "word": "huit", "textToSpeech": "acheter" },
-      { "word": "aliment", "textToSpeech": "aliment" },
-      { "word": "alimentation", "textToSpeech": "alimentation" },
-      { "word": "apporter", "textToSpeech": "apporter" },
-      { "word": "apprendre", "textToSpeech": "apprendre" },
-      { "word": "assez", "textToSpeech": "assez" }
+      { "word": "huit", "textToSpeech": "huit" },
+      { "word": "la pluie", "textToSpeech": "la pluie" },
+      { "word": "le lundi", "textToSpeech": "le lundi" },
+      { "word": "brune", "textToSpeech": "brune" },
+      { "word": "brun", "textToSpeech": "brun" },
+      { "word": "la nuit", "textToSpeech": "la nuit" }
     ]
   }
 ]
