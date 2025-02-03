@@ -18,11 +18,17 @@ export default function Home() {
             {isLoaded &&
               exercises.map((exercise) => {
                 return (
-                  <NavLink
-                    to={ROUTES.EXERCISE.replace(":id", exercise.id.toString())}
+                  <div
                     key={exercise.id}
                     className="card hoverable exercise-card"
                   >
+                    <NavLink
+                      className={"cta"}
+                      to={ROUTES.EXERCISE.replace(
+                        ":id",
+                        exercise.id.toString()
+                      )}
+                    />
                     <div className="title">{exercise.name}</div>
 
                     {exercise.type === "local" ? (
@@ -33,7 +39,7 @@ export default function Home() {
                         <FontAwesomeIcon icon={faPencil} />
                       </NavLink>
                     ) : null}
-                  </NavLink>
+                  </div>
                 );
               })}
           </div>

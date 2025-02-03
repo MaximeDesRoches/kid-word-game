@@ -25,14 +25,12 @@ export default function useVoice(language = "fr-CA") {
 
   return {
     say: (sentence: string) => {
-      console.log(sentence, correctLanguageVoices.length);
       const utterance = new SpeechSynthesisUtterance(sentence);
       utterance.lang = language;
       if (amelie || correctLanguageVoices[0]) {
         utterance.voice = amelie || correctLanguageVoices[0];
       }
       utterance.rate = 0.9;
-      console.log("speak");
       speechSynthesis.speak(utterance);
     },
   };

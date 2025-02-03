@@ -16,7 +16,6 @@ export function ExercisesContextProvider({
     const local = JSON.parse(
       window.localStorage.getItem("exercises") || "[]"
     ) as IExercise[];
-    console.log(local);
     setList([...data, ...local]);
     setIsLoaded(true);
   };

@@ -105,7 +105,7 @@ function Exercise({ hasHint = true }: { hasHint: boolean }) {
                 <FontAwesomeIcon icon={faArrowRotateLeft} /> Réinitialiser
               </div>
               <TextToSpeechButton
-                word={currentWord.word}
+                word={currentWord.textToSpeech || currentWord.word}
                 language={exercise.language}
               />
               <div
