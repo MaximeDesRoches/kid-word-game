@@ -8,22 +8,21 @@ import {
   faEye,
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
-import useVoice from "../../hooks/useVoice";
-import { EXCLAMATIONS, ROUTES } from "../../Constants";
-import randomArrayItem from "../../utils/randomArrayItem";
+import { ROUTES } from "../../Constants";
 import TextToSpeechButton from "../ui/TextToSpeechButton";
 import Progress from "../ui/Progress";
+import { useGlobalAudioPlayer } from "react-use-audio-player";
 
 function Exercise({ hasHint = true }: { hasHint: boolean }) {
   const { id } = useParams();
   const { exercise } = useExercise(id);
-  const { say } = useVoice(exercise?.language);
   const { words } = exercise || {};
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const currentWord = words && words[currentWordIndex];
   const [showWord, setShowWord] = useState(!hasHint);
   const ref = useRef<HTMLInputElement>(null);
   const [input, setInput] = useState("");
+  const { load } = useGlobalAudioPlayer();
 
   useEffect(() => {
     ref.current?.focus();
@@ -64,11 +63,11 @@ function Exercise({ hasHint = true }: { hasHint: boolean }) {
     if (!currentWord) return;
 
     if (currentWord.word === input) {
-      say(randomArrayItem(EXCLAMATIONS.SUCCESS));
+      load("./assets/sounds/win.mp3", { autoplay: true, initialVolume: 0.5 });
       setInput("");
       setCurrentWordIndex((v) => v + 1);
     } else {
-      say(randomArrayItem(EXCLAMATIONS.FAILURE));
+      load("./assets/sounds/error.mp3", { autoplay: true, initialVolume: 0.5 });
     }
   };
 
@@ -83,16 +82,6 @@ function Exercise({ hasHint = true }: { hasHint: boolean }) {
                 {showWord
                   ? currentWord.word
                   : currentWord.word.replace(/./g, "-")}
-              </span>
-              <TextToSpeechButton
-                language={exercise.language}
-                word={currentWord.textToSpeech || currentWord.word}
-              />
-              <span className="icon">
-                <FontAwesomeIcon
-                  icon={showWord ? faEyeSlash : faEye}
-                  onClick={() => setShowWord((v) => !v)}
-                />
               </span>
             </div>
             <div className="answer">
@@ -109,17 +98,22 @@ function Exercise({ hasHint = true }: { hasHint: boolean }) {
                 autoCapitalize="off"
               />
 
-              <div className="blocks">
-                {blocks}
-                <div className="card block reset" onClick={onClickReset}>
-                  <FontAwesomeIcon icon={faArrowRotateLeft} />
-                </div>
-                <div className="card block listen">
-                  <TextToSpeechButton
-                    word={input}
-                    language={exercise.language}
-                  />
-                </div>
+              <div className="blocks">{blocks}</div>
+            </div>
+            <div className="btns">
+              <div className="card block reset" onClick={onClickReset}>
+                <FontAwesomeIcon icon={faArrowRotateLeft} /> Réinitialiser
+              </div>
+              <TextToSpeechButton
+                word={currentWord.word}
+                language={exercise.language}
+              />
+              <div
+                className="card block hint"
+                onClick={() => setShowWord((v) => !v)}
+              >
+                <FontAwesomeIcon icon={showWord ? faEyeSlash : faEye} />{" "}
+                {showWord ? "Cacher" : "Afficher"}
               </div>
             </div>
             {input.length === currentWord.word.length && (

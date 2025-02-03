@@ -11,8 +11,8 @@ export default function TextToSpeechButton({
 }) {
   const { say } = useVoice(language);
   return (
-    <span className="icon">
-      <FontAwesomeIcon onClick={() => say(word)} icon={faBullhorn} />
-    </span>
+    <div className="card block listen" onClick={() => say(word)}>
+      <FontAwesomeIcon icon={faBullhorn} /> Écouter
+    </div>
   );
 }
