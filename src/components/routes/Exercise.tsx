@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef, useState } from "react";
+import { memo, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useExercise } from "../../hooks/useExercises";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,7 +16,16 @@ import { useGlobalAudioPlayer } from "react-use-audio-player";
 function Exercise({ hasHint = true }: { hasHint: boolean }) {
   const { id } = useParams();
   const { exercise } = useExercise(id);
-  const { words } = exercise || {};
+  const { words: defaultWords } = exercise || {};
+
+  const words = useMemo(() => {
+    if (!defaultWords) return [];
+    return defaultWords
+      .map((a) => ({ sort: Math.random(), value: a }))
+      .sort((a, b) => a.sort - b.sort)
+      .map((a) => a.value);
+  }, [defaultWords]);
+
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const currentWord = words && words[currentWordIndex];
   const [showWord, setShowWord] = useState(!hasHint);
